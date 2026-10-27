@@ -1,0 +1,26 @@
+version: 1.0.3
+description: UPF1 - Slice 1 (eMBB 010203 & 112233)
+
+pfcp:
+  addr: 10.200.1.2
+  nodeID: 10.200.1.2
+  retransTimeout: 1s
+  maxRetrans: 3
+
+gtpu:
+  forwarder: gtp5g
+  ifList:
+    - addr: 10.200.1.2
+      type: N3
+      ifname: upfgtp1
+
+dnnList:
+  - dnn: internet 
+    cidr: 10.60.0.0/16 
+  - dnn: internet 
+    cidr: 10.61.0.0/16 
+
+logger: 
+  enable: true 
+  level: info 
+  reportCaller: false

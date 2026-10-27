@@ -1,0 +1,91 @@
+info:
+  version: 1.0.9
+  description: AMF3 local configuration (Disjoint AMF Set)
+
+configuration:
+  amfName: AMF3
+  ngapIpList:
+  - 127.0.0.51
+  ngapPort: 38414
+  sbi:
+    scheme: http
+    registerIPv4: 127.0.0.20
+    bindingIPv4: 127.0.0.20
+    port: 8000
+    tls:
+      pem: cert/amf.pem
+      key: cert/amf.key
+  serviceNameList:
+  - namf-comm
+  - namf-evts
+  - namf-mt
+  - namf-loc
+  - namf-oam
+  servedGuamiList:
+  - plmnId:
+      mcc: 208
+      mnc: 93
+    amfId: caff00
+  supportTaiList:
+  - plmnId:
+      mcc: 208
+      mnc: 93
+    tac: 000001
+  plmnSupportList:
+  - plmnId:
+      mcc: 208
+      mnc: 93
+    snssaiList:
+    - sst: 5
+      sd: '050505'
+
+  supportDnnList:
+  - internet
+  nrfUri: http://127.0.0.10:8000
+  nrfCertPem: cert/nrf.pem
+  security:
+    integrityOrder:
+    - NIA2
+    cipheringOrder:
+    - NEA0
+    - NEA2
+  networkName:
+    full: free5GC
+    short: free
+  t3502Value: 720
+  t3512Value: 3600
+  non3gppDeregTimerValue: 3240
+  t3513:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3522:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3550:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3555:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3560:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3565:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+  t3570:
+    enable: true
+    expireTime: 6s
+    maxRetryTimes: 4
+#  locality: pool-urllc
+
+logger:
+  enable: true
+  level: info
+  reportCaller: false

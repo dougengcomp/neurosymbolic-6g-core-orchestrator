@@ -1,0 +1,129 @@
+info:
+  version: 1.0.2
+  description: NSSF patched local configuration for eMBB and URLLC
+
+configuration:
+  nssfName: NSSF
+  sbi:
+    scheme: http
+    registerIPv4: 127.0.0.31
+    bindingIPv4: 127.0.0.31
+    port: 8000
+    tls:
+      pem: cert/nssf.pem
+      key: cert/nssf.key
+  serviceNameList:
+  - nnssf-nsselection
+  - nnssf-nssaiavailability
+  nrfUri: http://127.0.0.10:8000
+  nrfCertPem: cert/nrf.pem
+
+  supportedPlmnList:
+  - mcc: 208
+    mnc: 93
+
+  supportedNssaiInPlmnList:
+  - plmnId:
+      mcc: 208
+      mnc: 93
+    supportedSnssaiList:
+    - sst: 1
+      sd: 010203
+    - sst: 1
+      sd: 112233
+    - sst: 2
+      sd: 020202
+    # --- ADDED SLICE 5 ---
+    - sst: 5
+      sd: 050505
+
+  nsiList:
+  - snssai:
+      sst: 1
+      sd: 010203
+    nsiInformationList:
+    - nrfId: http://127.0.0.10:8000/nnrf-nfm/v1/nf-instances
+      nsiId: 22
+  - snssai:
+      sst: 1
+      sd: 112233
+    nsiInformationList:
+    - nrfId: http://127.0.0.10:8000/nnrf-nfm/v1/nf-instances
+      nsiId: 23
+  - snssai:
+      sst: 2
+      sd: 020202
+    nsiInformationList:
+    - nrfId: http://127.0.0.10:8000/nnrf-nfm/v1/nf-instances
+      nsiId: 24
+  # --- ADDED SLICE 5 NSI MAPPING ---
+  - snssai:
+      sst: 5
+      sd: 050505
+    nsiInformationList:
+    - nrfId: http://127.0.0.10:8000/nnrf-nfm/v1/nf-instances
+      nsiId: 25
+
+  amfSetList:
+  - amfSetId: 1
+    amfList:
+    - ffa2e8d7-3275-49c7-8631-6af1df1d9d26
+    nrfAmfSet: http://127.0.0.10:8000/nnrf-nfm/v1/nf-instances
+    supportedNssaiAvailabilityData:
+    - tai:
+        plmnId:
+          mcc: 208
+          mnc: 93
+        tac: 000001
+      supportedSnssaiList:
+      - sst: 1
+        sd: 010203
+      - sst: 1
+        sd: 112233
+      - sst: 2
+        sd: 020202
+      # --- ADDED SLICE 5 ---
+      - sst: 5
+        sd: 050505
+
+  amfList:
+  - nfId: 469de254-2fe5-4ca0-8381-af3f500af77c
+    supportedNssaiAvailabilityData:
+    - tai:
+        plmnId:
+          mcc: 208
+          mnc: 93
+        tac: 000001
+      supportedSnssaiList:
+      - sst: 1
+        sd: 010203
+      - sst: 1
+        sd: 112233
+      - sst: 2
+        sd: 020202
+      # --- ADDED SLICE 5 ---
+      - sst: 5
+        sd: 050505
+
+  taList:
+  - tai:
+      plmnId:
+        mcc: 208
+        mnc: 93
+      tac: 000001
+    accessType: 3GPP_ACCESS
+    supportedSnssaiList:
+    - sst: 1
+      sd: 010203
+    - sst: 1
+      sd: 112233
+    - sst: 2
+      sd: 020202
+    # --- ADDED SLICE 5 ---
+    - sst: 5
+      sd: 050505
+
+logger:
+  enable: true
+  level: info
+  reportCaller: false

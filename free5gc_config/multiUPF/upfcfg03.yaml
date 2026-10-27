@@ -1,0 +1,24 @@
+version: 1.0.3
+description: UPF3 - Slice 5 (URLLC 050505)
+
+pfcp:
+  addr: 10.200.3.2
+  nodeID: 10.200.3.2
+  retransTimeout: 1s
+  maxRetrans: 3
+
+gtpu:
+  forwarder: gtp5g
+  ifList:
+    - addr: 10.200.3.2
+      type: N3
+      ifname: upfgtp3
+
+dnnList:
+  - dnn: internet 
+    cidr: 10.65.0.0/16 
+
+logger: 
+  enable: true 
+  level: info 
+  reportCaller: false
